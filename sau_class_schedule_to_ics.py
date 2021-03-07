@@ -131,9 +131,10 @@ def ConvertCalendar(course_dict):
             course_weeks_start, course_weeks_end = GetCourseTakeWeeks(week_string)
             calendar = CreateEvent(calendar, course_weeks_start, course_weeks_end,  year, semester, a)
 
-    output_file_name = '{}:{}-{}.ics'.format(course_dict['xsxx']['XH'], course_dict['xsxx']['XNMC'], course_dict['xsxx']['XQMMC'])
+    output_file_name = '{}({}-{}).ics'.format(course_dict['xsxx']['XH'], course_dict['xsxx']['XNMC'], course_dict['xsxx']['XQMMC'])
     output_file = open(output_file_name, 'wb')
     output_file.write(calendar.to_ical())
+    #print(calendar.to_ical())
     output_file.close()
     print('Successfully write your calendar to', output_file_name)
 
